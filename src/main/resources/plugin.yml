@@ -1,0 +1,7 @@
+name: Cigarettes
+version: '1.0'
+main: com.anuraaaan.cigarettes.Cigarettes
+api-version: '1.21'
+commands:
+  cig:
+    description: Команда плагина
