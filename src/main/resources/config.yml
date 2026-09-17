@@ -1,0 +1,115 @@
+lang: ru
+
+igniters:
+  - flint_and_steel
+  - fire_charge
+  - winston_butt
+
+tolerance: 0.5 # значение для вычисления толерантности: никотин * 0.5 (пример)
+
+database_update_minutes:
+
+nicotine_decay:
+  nicotine_amount: 1
+  nicotine_interval: 10 # 30 секунд
+
+  tolerance_amount: 1
+  tolerance_interval: 120 # 30 минут
+
+  addiction_amount: 1
+  addiction_interval: 300 # 2 часа
+
+nicotine_withdrawal:
+  1:
+    conditions:
+      min_addiction: 20
+      max_nicotine: 15
+
+    withdrawal_delay:
+      min_seconds: 15
+      max_seconds: 30
+
+    thoughts:
+      - "&#AAAAAAХочу покурить"
+      - "&#AAAAAAЧего-то не хватает..."
+      - "&#AAAAAAНадо бы покурить"
+
+    effects:
+      - "slowness, 10, 0"
+
+  2:
+    conditions:
+      min_addiction: 40
+      min_tolerance: 20
+      max_nicotine: 10
+
+    withdrawal_delay:
+      min_seconds: 10
+      max_seconds: 25
+
+    thoughts:
+      - "Становится тяжело без сигареты"
+      - "Очень хочется курить"
+      - "Мне нужна сигарета"
+
+    effects:
+      - "slowness, 15, 0"
+
+  3:
+    conditions:
+      min_addiction: 60
+      min_tolerance: 30
+      max_nicotine: 5
+
+    withdrawal_delay:
+      min_seconds: 8
+      max_seconds: 20
+
+    thoughts:
+      - "Не могу перестать думать о сигаретах"
+      - "Мне срочно нужна сигарета"
+      - "Руки так и тянутся закурить"
+
+    effects:
+      - "slowness, 20, 0"
+      - "weakness, 10, 0"
+
+  4:
+    conditions:
+      min_addiction: 80
+      min_tolerance: 40
+      max_nicotine: 3
+
+    withdrawal_delay:
+      min_seconds: 5
+      max_seconds: 15
+
+    thoughts:
+      - "Очень тяжело..."
+      - "Мне нужна сигарета прямо сейчас"
+      - "Я не выдержу без сигареты"
+
+    effects:
+      - "slowness, 30, 0"
+      - "weakness, 20, 0"
+      - "nausea, 10, 0"
+
+  5:
+    conditions:
+      min_addiction: 90
+      min_tolerance: 50
+      max_nicotine: 1
+
+    withdrawal_delay:
+      min_seconds: 3
+      max_seconds: 10
+
+    thoughts:
+      - "Срочно закурить..."
+      - "Мне плохо без сигареты"
+      - "Нужна сигарета"
+
+    effects:
+      - "slowness, 40, 0"
+      - "weakness, 30, 0"
+      - "nausea, 20, 0"

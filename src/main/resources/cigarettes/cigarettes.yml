@@ -1,0 +1,137 @@
+# Конфигурация сигарет/вейпа/трубки
+
+# enabled: true/false - позволяет выключить напиток, не удаляя его из файла.
+
+# name: "Winston" - имя. Поддерживает цвет: &6 или hex - &#123123.
+
+# lore: - описание предмета. Поддерживает цвет: &6 или hex - &#123123.
+#   - "&#AAAAAAКлассическая сигарета Winston"
+
+# material: stick - базовый предмет для основы. Стандартно stick.
+
+# max_stack_size: 64 - размер максимального стака незажженной сигареты. Может быть от 1 до 99. Стандартно стандартный размер стака базового предмета.
+
+# consume_seconds: 1 - время употребления сигареты. Стандартно 1 секунда.
+
+# animation: TOOT_HORN - анимация при употреблении сигареты. Доступны NONE, EAT, DRINK, BLOCK, BOW, SPEAR, CROSSBOW, SPYGLASS, TOOT_HORN, BRUSH, BUNDLE.
+# Стандартно TOOT_HORN
+
+# cooldown_seconds: 1 время перезарядки сигареты. Если не хотите, чтобы была перезарядка, не указывайте данный параметр или поставьте 0.
+
+# nicotine: 3.2 - количество никотина при употреблении сигареты. Стандартно 1.
+
+# addiction: 1.2 - количество зависимости при употреблении сигареты. Стандартно 0.2.
+
+# models: - блок с настройками моделей
+#   default_item_model: "minecraft:stick" - item model незажженной сигареты.
+#   default_custom_model_data: "winston" - CustomModelData незажженной сигареты.
+#   remaining_item_models: - item models для зажженной сигареты.
+#     100: "minecraft:soul_torch" - процент сколько осталось сигареты: item model.
+#     75: "minecraft:copper_torch"
+#     50: "minecraft:torch"
+#     25: "minecraft:redstone_torch"
+#   remaining_custom_model_data: - CustomModelData для зажженной сигареты.
+#     100: "one" - процент сколько осталось сигареты: CustomModelData.
+#     75: "two"
+#     50: "three"
+#     25: "four"
+
+# burn: - блок для тлеющей сигареты.
+#   burn_duration: 60 - время тления сигареты в секундах. Стандартно 60.
+#   burn_time_reduction_per_puff: 10 - на сколько секунд уменьшается оставшееся время сигареты после курения. Стандартно 10.
+#   require_ignition: true - необходимость предмета для поджога. Стандартно true.
+
+# puffs: - блок для вейпов или сигарет с затяжками.
+#   max_puffs: 50 - количество затяжек. Стандартно 50.
+#   keep_after_depletion: true - остаётся ли предмет, когда количество затяжек равно 0. Стандартно false.
+#   refill_sound: "minecraft:block.brewing_stand.brew, 2, 1.1" - звук при заправке. Стандартно "minecraft:block.brewing_stand.brew, 2, 1.1".
+#   refill_items: - предметы, которые используются для заправки.
+#     honey_bottle: - название предмета.
+#       restored_puffs: 3 - количество восстанавливаемых затяжек. Стандартно 1.
+#       return_item: glass_bottle - возвращаемый предмет после пополнение затяжек (может не указываться).
+#     apple: - название предмета.
+#       restored_puffs: 1 - количество восстанавливаемых затяжек.
+
+# Вы можете выбрать только один из двух блоков: burn или puffs.
+
+# return_item: winston_butt - возвращаемый предмет после полного выкуривания сигареты.
+
+# particles: - частицы при курении.
+#    Доступные: SMOKE, LARGE_SMOKE, WHITE_SMOKE, CAMPFIRE_SIGNAL_SMOKE, CAMPFIRE_COSY_SMOKE, ASH, CLOUD, FLAME, SMALL_FLAME, DUST
+#   - "Название, смещение вперёд от лица, +высота, количество, offsetX, offsetY, offsetZ, скорость"
+#  Если частица типа DUST
+#   - "Название, смещение вперёд от лица, +высота, количество, offsetX, offsetY, offsetZ, скорость, r, g, b, размер"
+
+# effects: - эффекты при курении.
+#   - "название, время эффекта, уровень эффекта, где 0 = 1"
+
+# sounds: - ключи означают действие, при котором воспроизводится звук.
+#   ignite: "название звука, громкость, питч" - звук при поджоге. Стандартно "minecraft:item.flintandsteel.use, 2, 1.1".
+#   extinguish: "название звука, громкость, питч" - звук при тушении. Стандартно "minecraft:block.fire.extinguish, 2, 1.3".
+#   puff: "название звука, громкость, питч" - звук при курении. Стандартно "minecraft:block.blastfurnace.fire_crackle, 2, 1.5".
+
+cigarettes:
+  winston:
+    enabled: true
+
+    name: "Winston"
+    lore:
+      - "&#AAAAAAКлассическая сигарета Winston"
+    material: stick
+    max_stack_size: 64
+
+    consume_seconds: 1
+    animation: TOOT_HORN #    NONE, EAT, DRINK, BLOCK, BOW, SPEAR, CROSSBOW, SPYGLASS, TOOT_HORN, BRUSH, BUNDLE
+
+    cooldown_seconds: 1.0
+
+    nicotine: 3.3
+    addiction: 0.5
+
+    models:
+      default_item_model: "minecraft:stick"
+      default_custom_model_data: "winston"
+
+      remaining_item_models:
+        100: "minecraft:soul_torch"
+        75: "minecraft:copper_torch"
+        50: "minecraft:torch"
+        25: "minecraft:redstone_torch"
+
+      remaining_custom_model_data:
+        100: 1
+        75: 2
+        50: 3
+        25: 4
+
+    #    burn:
+    #      burn_duration: 60
+    #      burn_time_reduction_per_puff: 10
+    #      require_ignition: true
+
+    puffs:
+      max_puffs: 0
+      keep_after_depletion: true
+
+      refill_sound: "minecraft:block.brewing_stand.brew, 2, 1.1"
+      refill_items:
+        apple:
+          restored_puffs: 1
+        winston_add_puff:
+          restored_puffs: 3
+          return_item: apple
+
+    return_item: "winston_butt"
+
+    particles:
+      - "CAMPFIRE_COSY_SMOKE, 0.5, -0.25, 10, 0, 0, 0, 0.1"
+      - "smoke, 0.5, -0.25, 4, 0, 0, 0, 0"
+
+    effects:
+      - "regeneration, 60, 0"
+      - "fire_resistance, 30, 1"
+
+    sounds:
+      ignite: "minecraft:item.flintandsteel.use, 2, 1.1" # звук при поджоге
+      extinguish: "minecraft:block.fire.extinguish, 2, 1.3" # звук при тушении
+      puff: "minecraft:block.blastfurnace.fire_crackle, 2, 1.5" # звук при курении

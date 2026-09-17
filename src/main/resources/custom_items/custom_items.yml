@@ -1,0 +1,55 @@
+# Конфигурация кастомных предметов
+
+# enabled: true/false - позволяет выключить напиток, не удаляя его из файла.
+
+# name: Имя. Поддерживает цвет: &6 или hex - &#123123.
+
+# lore: Описание предмета. Поддерживает цвет: &6 или hex - &#123123.
+
+# material: Базовый предмет для основы.
+
+# max_stack_size: Размер максимального стака предмета.
+
+# nicotine: количество никотина при употреблении сигареты.
+
+# tolerance: количество толерантности при употреблении сигареты.
+
+# addiction: количество зависимости при употреблении сигареты.
+
+# item_model: item model предмета
+# custom_model_data: CustomModelData предмета
+
+# use_on_right_click: предмет используется при клике
+
+#consumable: настройка поедания предмета
+#  consume_seconds: количество секунд
+#  animation: EAT #    NONE, EAT, DRINK, BLOCK, BOW, SPEAR, CROSSBOW, SPYGLASS, TOOT_HORN, BRUSH, BUNDLE
+#  sound: звук при поедании
+#  particles: будут ли частицы
+
+# return_item: возвращаемый предмет
+
+custom_items:
+  winston_butt:
+    enabled: true
+
+    name: "Подзарядка"
+    lore: []
+    material: stick
+    max_stack_size: 99
+
+    nicotine: -3.3
+    tolerance: -1.5
+    addiction: -0.5
+
+    item_model: "minecraft:carrot"
+    custom_model_data: "winston_add_puff"
+
+    use_on_right_click: false
+    consumable:
+      consume_seconds: 1
+      animation: EAT #    NONE, EAT, DRINK, BLOCK, BOW, SPEAR, CROSSBOW, SPYGLASS, TOOT_HORN, BRUSH, BUNDLE
+      sound: "q:q"
+      particles: true
+
+    return_item: "winston_butt"

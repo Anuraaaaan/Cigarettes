@@ -1,0 +1,16 @@
+no_arguments: "Вы не указали аргументы"
+no_permission: "У вас нет прав для выполнения этой команды"
+unknown_item: "Неизвестный предмет"
+player_only: "Эту команду можно выполнить только в игре"
+item_given: "Выдано %amount% %item%"
+amount_out_of_range: "Количество должно быть от 1 до 99"
+invalid_number: "Указано некорректное число"
+player_offline: "Игрок %player% не в сети"
+item_given_to_player: "Выдано %amount% %item% игроку %player%"
+config_reloaded: "Конфигурация успешно перезагружена"
+nicotine_added: "Вы добавили себе никотина: %nicotine%, толерантности: %tolerance%, зависимости: %addiction%"
+
+tank_full: "Бак уже полностью заправлен"
+remaining_puffs: "Осталось затяжек: %puffs%"
+
+nicotine_status: "🧪 %nicotine%; ⛨ %tolerance%; ☠ %addiction%"

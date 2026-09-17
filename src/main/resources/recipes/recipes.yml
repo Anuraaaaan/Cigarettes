@@ -1,0 +1,44 @@
+# Конфигурация рецептов
+
+# enabled: true/false - позволяет выключить напиток, не удаляя его из файла.
+
+# shaped: true/false. Если true, то ингридиенты имеют форму. Если false, то не имеют
+
+# если true:
+# ingredients: ингредиенты
+#   j: apple - ключ это как помечается предмет в сетке крафта, строка это сам предмет
+# pattern: - форма предмета
+#   - "jjj"
+
+# если false:
+# ingredients: ингредиенты
+#   apple: 2 - ключ это название предмета, число это количество предмета для крафта
+
+# result: результат при крафте
+# count: количество предмета
+
+recipes:
+  winston_butt:
+    enabled: true
+
+    shaped: true              # если выключено, то просто ингридиенты с кол-вом штук
+    ingredients:
+      j: apple
+    pattern:
+      - "jjj"
+
+    result: winston_butt
+    count: 3
+
+  winston:
+
+    enabled: true
+
+    shaped: true              # если выключено, то просто ингридиенты с кол-вом штук
+    ingredients:
+      j: apple
+    pattern:
+      - "jj"
+
+    result: winston
+    count: 1

@@ -1,7 +1,24 @@
 name: Cigarettes
 version: '1.0'
 main: com.anuraaaan.cigarettes.Cigarettes
-api-version: '1.21'
+api-version: '1.21.10'
+authors: [anuraaaan]
 commands:
-  cig:
+  cigarettes:
     description: Команда плагина
+    aliases:
+      - cig
+
+softdepend:
+  - ItemsAdder
+
+permissions:
+  cigarettes.reload:
+    description: Перезапустить конфигурацию
+    default: op
+  cigarettes.add:
+    description: Добавить никотин
+    default: op
+  cigarettes.give:
+    description: Выдать предмет
+    default: op

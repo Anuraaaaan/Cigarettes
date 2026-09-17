@@ -12,6 +12,9 @@ repositories {
         name = "papermc-repo"
         url = "https://repo.papermc.io/repository/maven-public/"
     }
+    maven {
+        url = 'https://maven.devs.beer/'
+    }
 
 }
 
@@ -19,6 +22,10 @@ dependencies {
     compileOnly("io.papermc.paper:paper-api:1.21.10-R0.1-SNAPSHOT")
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
+
+    implementation 'org.xerial:sqlite-jdbc:3.53.2.1'
+
+    compileOnly 'beer.devs:itemsadder-api:4.0.18-beta-10'
 
 }
 
