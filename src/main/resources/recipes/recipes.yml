@@ -1,44 +1,72 @@
-# Конфигурация рецептов
+# Recipe configuration
 
-# enabled: true/false - позволяет выключить напиток, не удаляя его из файла.
-
-# shaped: true/false. Если true, то ингридиенты имеют форму. Если false, то не имеют
-
-# если true:
-# ingredients: ингредиенты
-#   j: apple - ключ это как помечается предмет в сетке крафта, строка это сам предмет
-# pattern: - форма предмета
-#   - "jjj"
-
-# если false:
-# ingredients: ингредиенты
-#   apple: 2 - ключ это название предмета, число это количество предмета для крафта
-
-# result: результат при крафте
-# count: количество предмета
+# Full documentation:
+# English: https://github.com/Anuraaaaan/Cigarettes/wiki/Recipes%E2%80%90EN
+# Русский: https://github.com/Anuraaaaan/Cigarettes/wiki/Recipes%E2%80%90RU
 
 recipes:
-  winston_butt:
-    enabled: true
-
-    shaped: true              # если выключено, то просто ингридиенты с кол-вом штук
-    ingredients:
-      j: apple
-    pattern:
-      - "jjj"
-
-    result: winston_butt
-    count: 3
-
+  # Unique recipe identifier.
   winston:
-
+    # Enables or disables the recipe.
     enabled: true
 
-    shaped: true              # если выключено, то просто ингридиенты с кол-вом штук
-    ingredients:
-      j: apple
-    pattern:
-      - "jj"
+    # Recipe type: true — shaped, false — shapeless.
+    shaped: true
 
+    # Recipe ingredients.
+    # For a shaped recipe, each letter represents an ingredient and is used in the pattern.
+    ingredients:
+      d: dried_kelp
+      p: paper
+
+    # Ingredient layout for a shaped recipe.
+    # Each line corresponds to one row of the crafting table.
+    pattern:
+      - "ppp"
+      - "ddd"
+      - "ppp"
+
+    # Identifier of the item created by the recipe.
     result: winston
+
+    # Number of items created.
     count: 1
+
+  apple_vape_refill:
+    enabled: true
+
+    shaped: false
+
+    # Ingredients and their quantities.
+    ingredients:
+      apple: 2
+      glass_bottle: 1
+
+    result: apple_vape_refill
+    count: 1
+
+  vape:
+    enabled: true
+    shaped: true
+    ingredients:
+      r: redstone
+      i: iron_ingot
+      a: apple_vape_refill
+    pattern:
+      - "iai"
+      - "iai"
+      - " r "
+    result: vape
+    count: 1
+
+  nic_off_gum:
+    enabled: true
+
+    shaped: false
+
+    # Ingredients and their quantities.
+    ingredients:
+      short_grass: 2
+
+    result: nic_off_gum
+    count: 3

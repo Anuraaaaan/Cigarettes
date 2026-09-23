@@ -6,6 +6,7 @@ import com.anuraaaan.cigarettes.nicotine.WithdrawalStageData;
 import com.anuraaaan.cigarettes.utils.TextFormatter;
 import lombok.Getter;
 
+import net.kyori.adventure.text.Component;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.potion.PotionEffect;
 
@@ -112,7 +113,7 @@ public class ConfigRegistry {
                 continue;
             }
 
-            List<String> thoughts = TextFormatter.colorize(withdrawalSection.getStringList(key + ".thoughts"));
+            List<Component> thoughts = TextFormatter.colorize(withdrawalSection.getStringList(key + ".thoughts"));
 
             List<String> effectsString = withdrawalSection.getStringList(key + ".effects");
             List<PotionEffect> effects = new ArrayList<>();

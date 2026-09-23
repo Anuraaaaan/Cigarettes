@@ -1,55 +1,76 @@
-# Конфигурация кастомных предметов
+# Custom item configuration
 
-# enabled: true/false - позволяет выключить напиток, не удаляя его из файла.
-
-# name: Имя. Поддерживает цвет: &6 или hex - &#123123.
-
-# lore: Описание предмета. Поддерживает цвет: &6 или hex - &#123123.
-
-# material: Базовый предмет для основы.
-
-# max_stack_size: Размер максимального стака предмета.
-
-# nicotine: количество никотина при употреблении сигареты.
-
-# tolerance: количество толерантности при употреблении сигареты.
-
-# addiction: количество зависимости при употреблении сигареты.
-
-# item_model: item model предмета
-# custom_model_data: CustomModelData предмета
-
-# use_on_right_click: предмет используется при клике
-
-#consumable: настройка поедания предмета
-#  consume_seconds: количество секунд
-#  animation: EAT #    NONE, EAT, DRINK, BLOCK, BOW, SPEAR, CROSSBOW, SPYGLASS, TOOT_HORN, BRUSH, BUNDLE
-#  sound: звук при поедании
-#  particles: будут ли частицы
-
-# return_item: возвращаемый предмет
+# Full documentation:
+# English: https://github.com/Anuraaaaan/Cigarettes/wiki/Custom%E2%80%90Items%E2%80%90EN
+# Русский: https://github.com/Anuraaaaan/Cigarettes/wiki/Custom%E2%80%90Items%E2%80%90RU
 
 custom_items:
-  winston_butt:
+  # Custom item identifier.
+  nic_off_gum:
+    # Enables or disables the custom item.
     enabled: true
 
-    name: "Подзарядка"
-    lore: []
+    # Item name.
+    name: "&#72ff6aAddiction Relief Gum"
+
+    # Base item material.
     material: stick
-    max_stack_size: 99
 
-    nicotine: -3.3
-    tolerance: -1.5
-    addiction: -0.5
+    # Maximum stack size.
+    max_stack_size: 64
 
-    item_model: "minecraft:carrot"
-    custom_model_data: "winston_add_puff"
+    # Item Model used to display the item.
+    item_model: "minecraft:slime_block"
 
+    # Change to the nicotine level when using the item.
+    nicotine: -2.3
+
+    # Change to the tolerance level when using the item.
+    tolerance: -0.5
+
+    # Change to the addiction level when using the item.
+    addiction: -0.2
+
+    # Allows the item to be used by right-clicking.
     use_on_right_click: false
+
+    # Settings for using the item as a consumable.
     consumable:
-      consume_seconds: 1
-      animation: EAT #    NONE, EAT, DRINK, BLOCK, BOW, SPEAR, CROSSBOW, SPYGLASS, TOOT_HORN, BRUSH, BUNDLE
-      sound: "q:q"
+      # Item usage duration in seconds.
+      consume_seconds: 1.2
+
+      # Animation played when using the item.
+      animation: EAT
+
+      # Sound played when using the item.
+      sound: "minecraft:entity.generic.eat"
+
+      # Whether to play particles when using the item.
       particles: true
 
-    return_item: "winston_butt"
+  apple_vape_refill:
+    enabled: true
+    name: "&#AAAAAAApple vape refill"
+
+    # Item description.
+    lore:
+      - "&#AAAAAAFreshness in every drop of vapor."
+
+    material: stick
+    max_stack_size: 64
+
+    item_model: "minecraft:apple"
+
+    # Custom Model Data used to display the item.
+    custom_model_data: "apple_vape_refill"
+
+  winston_butt:
+    enabled: true
+    name: "&#AAAAAAWinston Cigarette Butt"
+    lore:
+      - "&#AAAAAAOnce gave a few minutes of peace."
+      - "&#C49494Now, it is only a reminder of them."
+
+    material: snowball
+    max_stack_size: 64
+    item_model: "minecraft:stick"

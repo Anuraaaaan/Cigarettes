@@ -6,6 +6,7 @@ import com.anuraaaan.cigarettes.nicotine.WithdrawalData;
 import com.anuraaaan.cigarettes.nicotine.WithdrawalStageData;
 import com.anuraaaan.cigarettes.registry.ConfigRegistry;
 import lombok.Getter;
+import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.scheduler.BukkitRunnable;
@@ -72,11 +73,11 @@ public class NicotineWithdrawalManager extends BukkitRunnable {
 
             WithdrawalStageData stage = configRegistry.getWithdrawalStages().get(newLevel);
 
-            List<String> thoughts = stage.getThoughts();
+            List<Component> thoughts = stage.getThoughts();
 
             if (!thoughts.isEmpty()) {
 
-                String thought = thoughts.get(ThreadLocalRandom.current().nextInt(thoughts.size()));
+                Component thought = thoughts.get(ThreadLocalRandom.current().nextInt(thoughts.size()));
 
                 player.sendActionBar(thought);
             }

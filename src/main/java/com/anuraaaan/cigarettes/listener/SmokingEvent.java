@@ -76,10 +76,18 @@ public class SmokingEvent implements Listener {
         if (cigarette == null) return;
 
         if (equipmentSlot == EquipmentSlot.HAND && plugin.getItemParser().isMatchingAny(player.getInventory().getItemInOffHand(),
-                new ArrayList<>(cigarette.getRefillItems().keySet()), KEY_ID)) return;
+                new ArrayList<>(cigarette.getRefillItems().keySet()), KEY_ID)) {
+
+            e.setCancelled(true);
+            return;
+        }
 
         if (equipmentSlot == EquipmentSlot.OFF_HAND && plugin.getItemParser().isMatchingAny(player.getInventory().getItemInMainHand(),
-                new ArrayList<>(cigarette.getRefillItems().keySet()), KEY_ID)) return;
+                new ArrayList<>(cigarette.getRefillItems().keySet()), KEY_ID)) {
+
+            e.setCancelled(true);
+            return;
+        }
 
         ItemMeta meta = item.getItemMeta();
         if (meta == null) return;
@@ -146,19 +154,19 @@ public class SmokingEvent implements Listener {
 
         pdc.set(KEY_REMAINING_PUFFS, PersistentDataType.INTEGER,remainingPuffs);
 
-        List<String> lore = (meta.getLore() == null) ? new ArrayList<>() : meta.getLore();
-        String line = TextFormatter.colorize(
+        List<Component> lore = (meta.lore() == null) ? new ArrayList<>() : meta.lore();
+        Component line = TextFormatter.colorize(
                 TextFormatter.setPlaceholdersString(
                         configRegistry.getLangMap().get("remaining_puffs"),
                         "%puffs%", Integer.toString(remainingPuffs)));
 
-        if (meta.getLore() == null) {
+        if (meta.lore() == null) {
             lore.add(line);
 
-            meta.setLore(lore);
+            meta.lore(lore);
         } else {
             lore.set(lore.size() - 1, line);
-            meta.setLore(lore);
+            meta.lore(lore);
         }
 
         updateItemModel(cigarette, meta, remainingPuffs, cigarette.getMaxPuffs());
@@ -200,12 +208,12 @@ public class SmokingEvent implements Listener {
         nicotineWithdrawalManager.setWithdrawalData(uuid);
 
         NicotineData nicotineData = nicotineManager.getNicotineData(uuid);
-        player.sendActionBar(Component.text(TextFormatter.colorize(
+        player.sendActionBar(TextFormatter.colorize(
                 TextFormatter.setPlaceholdersString(
                         configRegistry.getLangMap().get("nicotine_status"),
                         "%nicotine%", TextFormatter.formatDouble(nicotineData.getNicotine()),
                         "%tolerance%", TextFormatter.formatDouble(nicotineData.getTolerance()),
-                        "%addiction%", TextFormatter.formatDouble(nicotineData.getAddiction())))));
+                        "%addiction%", TextFormatter.formatDouble(nicotineData.getAddiction()))));
     }
 
     private void applyEffects(CigaretteDefinition cigarette, Player player) {

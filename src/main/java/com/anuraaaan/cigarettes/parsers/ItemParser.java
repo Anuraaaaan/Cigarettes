@@ -25,6 +25,10 @@ public class ItemParser {
 
     public ItemStack parseItemIA(String item) {
 
+        if (item == null) {
+            return null;
+        }
+
         if (item.contains(":") && plugin.isEnabledItemsAdder()) {
             CustomStack cs = CustomStack.getInstance(item);
             if (cs != null) {
@@ -36,11 +40,14 @@ public class ItemParser {
     }
 
     public ItemStack parseItemNoIA(String item) {
+        if (item == null) {
+            return null;
+        }
+
         return parseItem(item);
     }
 
     private ItemStack parseItem(String item) {
-        if (item == null) return null;
 
         ItemStack cigarette = cigaretteRegistry.getUnlitCigarettes().get(item);
         if (cigarette != null) {

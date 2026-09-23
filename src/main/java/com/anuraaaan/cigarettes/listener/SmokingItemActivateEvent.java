@@ -6,6 +6,7 @@ import com.anuraaaan.cigarettes.parsers.ItemIdentifier;
 import com.anuraaaan.cigarettes.registry.CigaretteRegistry;
 import com.anuraaaan.cigarettes.registry.ConfigRegistry;
 import com.anuraaaan.cigarettes.utils.TextFormatter;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
@@ -106,8 +107,8 @@ public class SmokingItemActivateEvent implements Listener {
         if (litCigarette.getMaxPuffs() > 0) {
             pdcLitCigarette.set(KEY_REMAINING_PUFFS, PersistentDataType.INTEGER, litCigarette.getMaxPuffs());
 
-            List<String> lore = litCigaretteMeta.getLore();
-            String line = TextFormatter.colorize(
+            List<Component> lore = litCigaretteMeta.lore();
+            Component line = TextFormatter.colorize(
                     TextFormatter.setPlaceholdersString(
                             configRegistry.getLangMap().get("remaining_puffs"),
                             "%puffs%", Integer.toString(litCigarette.getMaxPuffs())));
@@ -121,7 +122,7 @@ public class SmokingItemActivateEvent implements Listener {
             } else {
                 lore.set(lore.size() - 1, line);
             }
-            litCigaretteMeta.setLore(lore);
+            litCigaretteMeta.lore(lore);
         }
 
         Integer thresholdItemModel = litCigarette.getRemainingItemModels().ceilingKey(100);

@@ -9,7 +9,6 @@ import com.anuraaaan.cigarettes.parsers.ItemIdentifier;
 import com.anuraaaan.cigarettes.registry.ConfigRegistry;
 import com.anuraaaan.cigarettes.registry.CustomItemsRegistry;
 import com.anuraaaan.cigarettes.utils.TextFormatter;
-import net.kyori.adventure.text.Component;
 import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -101,11 +100,11 @@ public class CustomItemUseEvent implements Listener {
         nicotineWithdrawalManager.setWithdrawalData(uuid);
 
         NicotineData nicotineData = nicotineManager.getNicotineData(uuid);
-        player.sendActionBar(Component.text(TextFormatter.colorize(
+        player.sendActionBar(TextFormatter.colorize(
                 TextFormatter.setPlaceholdersString(
                         configRegistry.getLangMap().get("nicotine_status"),
                         "%nicotine%", TextFormatter.formatDouble(nicotineData.getNicotine()),
                         "%tolerance%", TextFormatter.formatDouble(nicotineData.getTolerance()),
-                        "%addiction%", TextFormatter.formatDouble(nicotineData.getAddiction())))));
+                        "%addiction%", TextFormatter.formatDouble(nicotineData.getAddiction()))));
     }
 }

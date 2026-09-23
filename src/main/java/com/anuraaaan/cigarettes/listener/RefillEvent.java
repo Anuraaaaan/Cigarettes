@@ -108,7 +108,7 @@ public class RefillEvent implements Listener {
         int newPuffs = puff + addedPuffs;
         if (newPuffs > cigarette.getMaxPuffs()) {
 
-            player.sendActionBar(Component.text(TextFormatter.colorize(configRegistry.getLangMap().get("tank_full"))));
+            player.sendActionBar(TextFormatter.colorize(configRegistry.getLangMap().get("tank_full")));
             return;
         }
         pdcItemCigarette.set(KEY_REMAINING_PUFFS, PersistentDataType.INTEGER, newPuffs);
@@ -135,8 +135,8 @@ public class RefillEvent implements Listener {
             }
         }
 
-        List<String> lore = cigaretteItemMeta.getLore();
-        String line = TextFormatter.colorize(
+        List<Component> lore = cigaretteItemMeta.lore();
+        Component line = TextFormatter.colorize(
                 TextFormatter.setPlaceholdersString(
                         configRegistry.getLangMap().get("remaining_puffs"),
                         "%puffs%", Integer.toString(newPuffs)));
@@ -152,7 +152,7 @@ public class RefillEvent implements Listener {
             lore.set(lore.size() - 1, line);
         }
 
-        cigaretteItemMeta.setLore(lore);
+        cigaretteItemMeta.lore(lore);
         cigaretteItemStack.setItemMeta(cigaretteItemMeta);
 
         if (returnItem != null) {

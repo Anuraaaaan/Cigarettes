@@ -8,7 +8,6 @@ import com.anuraaaan.cigarettes.registry.ConfigRegistry;
 import com.anuraaaan.cigarettes.registry.CustomItemsRegistry;
 import com.anuraaaan.cigarettes.registry.RecipesRegistry;
 import com.anuraaaan.cigarettes.utils.TextFormatter;
-import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -166,12 +165,12 @@ public class CigarettesCommand implements CommandExecutor, TabCompleter {
                 nicotineManager.addNicotineData(uuid, nicotine, tolerance, addiction);
                 NicotineData nicotineData = nicotineManager.getNicotineData(uuid);
 
-                commandSender.sendActionBar(Component.text(TextFormatter.colorize(
+                commandSender.sendActionBar(TextFormatter.colorize(
                         TextFormatter.setPlaceholdersString(
                                 configRegistry.getLangMap().get("nicotine_status"),
                                 "%nicotine%", TextFormatter.formatDouble(nicotineData.getNicotine()),
                                 "%tolerance%", TextFormatter.formatDouble(nicotineData.getTolerance()),
-                                "%addiction%", TextFormatter.formatDouble(nicotineData.getAddiction())))));
+                                "%addiction%", TextFormatter.formatDouble(nicotineData.getAddiction()))));
 
                 commandSender.sendMessage(TextFormatter.colorize(
                         TextFormatter.setPlaceholdersString(

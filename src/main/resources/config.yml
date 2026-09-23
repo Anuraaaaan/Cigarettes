@@ -1,59 +1,97 @@
-lang: ru
+# Main configuration for the Cigarettes plugin.
 
+# Full documentation:
+# English: https://github.com/Anuraaaaan/Cigarettes/wiki/Config%E2%80%90EN
+# Русский: https://github.com/Anuraaaaan/Cigarettes/wiki/Config%E2%80%90RU
+
+# Configuration version.
+# Used by the plugin to determine the config structure version.
+version: 1
+
+# Language file used by the plugin.
+# For example: ru, en.
+lang: en
+
+# Items that can be used to ignite cigarettes.
 igniters:
   - flint_and_steel
   - fire_charge
   - winston_butt
 
-tolerance: 0.5 # значение для вычисления толерантности: никотин * 0.5 (пример)
+# Amount of tolerance gained per unit of nicotine.
+# For example, with a value of 0.5, 3 units of nicotine will give 1.5 tolerance.
+tolerance: 0.5
 
-database_update_minutes:
+# Interval for saving player data to the database, in minutes.
+database_update_minutes: 10
 
+# Gradual reduction of nicotine, tolerance, and addiction levels.
 nicotine_decay:
+  # Amount of nicotine reduced per interval.
   nicotine_amount: 1
-  nicotine_interval: 10 # 30 секунд
 
+  # Nicotine decay interval in seconds.
+  nicotine_interval: 120
+
+  # Amount of tolerance reduced per interval.
   tolerance_amount: 1
-  tolerance_interval: 120 # 30 минут
 
+  # Tolerance decay interval in seconds.
+  tolerance_interval: 1800
+
+  # Amount of addiction reduced per interval.
   addiction_amount: 1
-  addiction_interval: 300 # 2 часа
 
+  # Addiction decay interval in seconds.
+  addiction_interval: 7200
+
+# Nicotine withdrawal level settings.
+# Each level has its own activation conditions, symptom interval, displayed thoughts, and effects.
 nicotine_withdrawal:
+  # Withdrawal level.
   1:
+    # Conditions required to activate this level.
     conditions:
-      min_addiction: 20
+      min_addiction: 15
       max_nicotine: 15
 
+    # Interval between symptom occurrences in seconds.
+    # A random value between min_seconds and max_seconds is selected.
     withdrawal_delay:
-      min_seconds: 15
-      max_seconds: 30
+      min_seconds: 180
+      max_seconds: 300
 
+    # Random thought displayed to the player when a symptom occurs.
     thoughts:
-      - "&#AAAAAAХочу покурить"
-      - "&#AAAAAAЧего-то не хватает..."
-      - "&#AAAAAAНадо бы покурить"
+      - "&#AAAAAAI could use a cigarette..."
+      - "&#AAAAAAI feel like having a smoke."
+      - "&#AAAAAAIt's been a while since I last smoked..."
+      - "&#AAAAAAMaybe it's time to have a smoke."
 
+    # Effects applied to the player when a symptom occurs.
+    # Format: EFFECT, duration, amplifier.
     effects:
-      - "slowness, 10, 0"
+      - "mining_fatigue, 9, 0"
 
   2:
     conditions:
-      min_addiction: 40
-      min_tolerance: 20
+      min_addiction: 35
+      min_tolerance: 15
       max_nicotine: 10
 
     withdrawal_delay:
-      min_seconds: 10
-      max_seconds: 25
+      min_seconds: 120
+      max_seconds: 240
 
     thoughts:
-      - "Становится тяжело без сигареты"
-      - "Очень хочется курить"
-      - "Мне нужна сигарета"
+      - "&#FFD580I really feel like smoking."
+      - "&#FFD580I should have a cigarette."
+      - "&#FFD580I can't get cigarettes out of my head."
+      - "&#FFD580I really need a puff."
 
     effects:
-      - "slowness, 15, 0"
+      - "hunger, 10, 0"
+      - "mining_fatigue, 14, 1"
 
   3:
     conditions:
@@ -62,54 +100,39 @@ nicotine_withdrawal:
       max_nicotine: 5
 
     withdrawal_delay:
-      min_seconds: 8
-      max_seconds: 20
+      min_seconds: 90
+      max_seconds: 180
 
     thoughts:
-      - "Не могу перестать думать о сигаретах"
-      - "Мне срочно нужна сигарета"
-      - "Руки так и тянутся закурить"
+      - "&#FFAA55I can't stop thinking about cigarettes."
+      - "&#FFAA55I need a cigarette right now."
+      - "&#FFAA55It's getting harder and harder to go without a cigarette."
+      - "&#FFAA55I want to smoke. Right now."
 
     effects:
-      - "slowness, 20, 0"
-      - "weakness, 10, 0"
+      - "hunger, 15, 1"
+      - "mining_fatigue, 16, 1"
+      - "weakness, 10, 1"
 
   4:
     conditions:
       min_addiction: 80
       min_tolerance: 40
-      max_nicotine: 3
+      max_nicotine: 2
 
     withdrawal_delay:
-      min_seconds: 5
-      max_seconds: 15
+      min_seconds: 60
+      max_seconds: 120
 
     thoughts:
-      - "Очень тяжело..."
-      - "Мне нужна сигарета прямо сейчас"
-      - "Я не выдержу без сигареты"
+      - "&#FF5555I need a cigarette right now..."
+      - "&#FF5555I can't take this anymore."
+      - "&#FF5555I feel terrible without a cigarette."
+      - "&#FF5555A cigarette. Right now."
+      - "&#FF5555I can't think about anything else."
 
     effects:
-      - "slowness, 30, 0"
-      - "weakness, 20, 0"
-      - "nausea, 10, 0"
-
-  5:
-    conditions:
-      min_addiction: 90
-      min_tolerance: 50
-      max_nicotine: 1
-
-    withdrawal_delay:
-      min_seconds: 3
-      max_seconds: 10
-
-    thoughts:
-      - "Срочно закурить..."
-      - "Мне плохо без сигареты"
-      - "Нужна сигарета"
-
-    effects:
-      - "slowness, 40, 0"
-      - "weakness, 30, 0"
-      - "nausea, 20, 0"
+      - "hunger, 20, 2"
+      - "mining_fatigue, 20, 2"
+      - "weakness, 14, 2"
+      - "nausea, 10, 2"

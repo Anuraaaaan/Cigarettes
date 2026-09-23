@@ -10,6 +10,7 @@ import io.papermc.paper.datacomponent.item.UseCooldown;
 import io.papermc.paper.datacomponent.item.consumable.ItemUseAnimation;
 import lombok.Getter;
 import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
@@ -89,8 +90,8 @@ public class CigaretteRegistry {
 
                 // ===================================== ИМЯ И ЛОР =====================================
 
-                String name = TextFormatter.colorize(configuration.getString("cigarettes." + path + ".name"));
-                List<String> lore = TextFormatter.colorize(configuration.getStringList("cigarettes." + path + ".lore"));
+                Component name = TextFormatter.colorize(configuration.getString("cigarettes." + path + ".name"));
+                List<Component> lore = TextFormatter.colorize(configuration.getStringList("cigarettes." + path + ".lore"));
 
 
 
@@ -271,10 +272,10 @@ public class CigaretteRegistry {
                 ItemMeta itemMetaCigarettes = itemStackCigarettes.getItemMeta();
                 if (itemMetaCigarettes == null) continue;
 
-                itemMetaCigarettes.setItemName(name);
+                itemMetaCigarettes.itemName(name);
 
                 if (!lore.isEmpty()) {
-                    itemMetaCigarettes.setLore(lore);
+                    itemMetaCigarettes.lore(lore);
                 }
 
 
@@ -318,10 +319,10 @@ public class CigaretteRegistry {
                 }
                 ItemMeta itemMetaLitCigarettes = itemStackLitCigarettes.getItemMeta();
 
-                itemMetaLitCigarettes.setItemName(name);
+                itemMetaLitCigarettes.itemName(name);
 
                 if (!lore.isEmpty()) {
-                    itemMetaCigarettes.setLore(lore);
+                    itemMetaCigarettes.lore(lore);
                 }
 
                 itemMetaLitCigarettes.setMaxStackSize(1);

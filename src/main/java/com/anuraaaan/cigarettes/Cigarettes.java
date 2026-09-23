@@ -36,6 +36,16 @@ public final class Cigarettes extends JavaPlugin {
 
     @Override
     public void onEnable() {
+
+        String currentVersion = Bukkit.getMinecraftVersion();
+
+        String version = "1.21.5";
+        if (isLowerThan(currentVersion, version)) {
+            getLogger().severe("This plugin requires Minecraft " + version +" or newer!");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
         saveDefaultConfig();
         enabledItemsAdder = Bukkit.getServer().getPluginManager().isPluginEnabled("ItemsAdder");
 
@@ -118,6 +128,29 @@ public final class Cigarettes extends JavaPlugin {
         } catch (SQLException e) {
             getLogger().warning("Failed to disconnect from the database! " + e);
         }
+    }
+
+    private boolean isLowerThan(String current, String required) {
+        String[] currentParts = current.split("\\.");
+        String[] requiredParts = required.split("\\.");
+
+        int maxLength = Math.max(currentParts.length, requiredParts.length);
+
+        for (int i = 0; i < maxLength; i++) {
+            int currentValue = i < currentParts.length ? Integer.parseInt(currentParts[i]) : 0;
+
+            int requiredValue = i < requiredParts.length ? Integer.parseInt(requiredParts[i]) : 0;
+
+            if (currentValue < requiredValue) {
+                return true;
+            }
+
+            if (currentValue > requiredValue) {
+                return false;
+            }
+        }
+
+        return false;
     }
 
 }

@@ -8,6 +8,7 @@ import io.papermc.paper.datacomponent.item.Consumable;
 import io.papermc.paper.datacomponent.item.consumable.ItemUseAnimation;
 import lombok.Getter;
 import net.kyori.adventure.key.Key;
+import net.kyori.adventure.text.Component;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.configuration.ConfigurationSection;
@@ -69,10 +70,10 @@ public class CustomItemsRegistry {
                 boolean enabled = configurationSection.getBoolean("custom_items." + path + ".enabled", true);
                 if (!enabled) continue;
 
-                String name = TextFormatter.colorize(fileConfiguration.getString("custom_items." + path + ".name"));
-                List<String> lore = TextFormatter.colorize(fileConfiguration.getStringList("custom_items." + path + ".lore"));
+                Component name = TextFormatter.colorize(fileConfiguration.getString("custom_items." + path + ".name"));
+                List<Component> lore = TextFormatter.colorize(fileConfiguration.getStringList("custom_items." + path + ".lore"));
 
-                String materialName = fileConfiguration.getString("custom_items." + path + ".base_item", "stick").toUpperCase();
+                String materialName = fileConfiguration.getString("custom_items." + path + ".material", "stick").toUpperCase();
                 Material baseMaterial;
                 try {
                     baseMaterial = Material.valueOf(materialName);
@@ -83,7 +84,7 @@ public class CustomItemsRegistry {
 
                 String itemModel = fileConfiguration.getString("custom_items." + path + ".item_model");
                 String customModelData = fileConfiguration.getString("custom_items." + path + ".custom_model_data");
-                int maxStackSize = fileConfiguration.getInt("custom_items." + path + ".max_stack", baseMaterial.getMaxStackSize());
+                int maxStackSize = fileConfiguration.getInt("custom_items." + path + ".max_stack_size", baseMaterial.getMaxStackSize());
 
                 boolean stackable = baseMaterial.getMaxStackSize() > 1;
 
@@ -142,10 +143,10 @@ public class CustomItemsRegistry {
 
                 ItemMeta meta = itemStack.getItemMeta();
                 if (meta == null) continue;
-                meta.setItemName(name);
+                meta.itemName(name);
 
                 if (!lore.isEmpty()) {
-                    meta.setLore(lore);
+                    meta.lore(lore);
                 }
 
                 meta.setMaxStackSize(maxStackSize);
